@@ -1,0 +1,304 @@
+/* Container for the step section */
+.step-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Title styling */
+.step-container h2 {
+    color: #2196F3;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Editable list table */
+.step-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.step-container table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Textarea for step description */
+.step-container textarea.step-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allow vertical resizing */
+    font-size: 14px;
+    min-height: 80px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Button group for navigation buttons */
+.step-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.step-container .step-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Previous button */
+.step-container .previous-button {
+    background-color: #4CAF50;
+}
+
+.step-container .previous-button:hover {
+    background-color: #45A049;
+}
+
+/* Next button */
+.step-container .next-button {
+    background-color: #2196F3;
+}
+
+.step-container .next-button:hover {
+    background-color: #1976D2;
+}
+
+/* Add and Remove buttons for EditableList */
+.step-container .editable-add-button {
+    background-color: #af6a4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.step-container .editable-add-button:hover {
+    background-color: #4549a0;
+}
+
+.step-container .editable-remove-button {
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.step-container .editable-remove-button:hover {
+    background-color: #E64A19;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container for the main section */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.recipe-details-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.recipe-info {
+    flex: 2;
+}
+
+.recipe-ingredients {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.recipe-images {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ingredient-item {
+    margin-bottom: 15px;
+}
+
+.ingredient-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3d8ff;
+    border-radius: 5px;
+}
+
+.food-details {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3d8ff;
+    border-radius: 5px;
+}
+
+.food-details h3 {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
+}
+
+.article-container {
+    max-height: 200px; /* Set a maximum height for the article section */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    background-color: #ffffff; /* Optional: Add a background color */
+}
+
+.search-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in width calculations */
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Ensure padding is included in width calculations */
+}
+
+.search-bar:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.2);
+}
+
+.search-bar:hover {
+    border-color: #1976D2;
+    box-shadow: 0 4px 6px rgba(33, 150, 243, 0.2);
+}
+
+.recipe-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* Add white background */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners apply */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.recipe-table th, .recipe-table td {
+    text-align: left;
+    padding: 12px; /* Consistent padding */
+}
+
+.recipe-table th {
+    background-color: #2196F3; /* Blue header background */
+    color: white; /* White text for headers */
+}
+
+.recipe-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+.recipe-table tr:hover {
+    background-color: #e0f7fa; /* Highlight row on hover */
+}
+
+.recipe-table td {
+    border-bottom: 1px solid #ddd; /* Add subtle border between rows */
+}
+
+@media only screen and (max-width: 768px) {
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-bar {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .recipe-table th, .recipe-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .recipe-table {
+        font-size: 12px;
+    }
+
+    .table-container {
+        max-height: 200px; /* Reduce height for smaller screens */
+    }
+
+    .article-container {
+        max-height: 150px; /* Reduce height for smaller screens */
+    }
+}

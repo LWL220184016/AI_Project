@@ -1,0 +1,28 @@
+
+1. 如果要 CSS 不嵌入 php/html 文件，則需要吧 CSS 文件改成 php 文件，然後在開頭加入：
+---------------不是這行  Maybe: app.use(express.static(path.join(__dirname, 'public'))) not work!
+是這行  <?php header("Content-type: text/css"); ?>
+這樣 CSS 就能順利加載了。
+
+2. if this is your two file location: 
+        Server/php_file/register.php 
+        Server/Style/CSSregister.css 
+You can use the code like this code to locate the CSSregister.css in your register.php: 
+    <link rel="stylesheet" href="../Style/CSSregister.css" />
+
+3. app.use(express.static(path.join(__dirname, 'public')))
+這行是用來設定靜態檔案的路徑，這樣就不用再每個檔案都寫一次路徑了。
+這樣就可以直接在 html 中使用 <link rel="stylesheet" href="/CSSregister.css" /> 來引入 CSS 了。
+---------------but it actually just work in folder 'public', not work in other folders inside the folder 'public'.
+
+4. 當您使用 HTML 開發頁面並提交表單時，瀏覽器會自動在請求中包含 cookie。 這是瀏覽器的預設行為。
+但是，當您使用 JavaScript 發出請求（例如使用 Fetch API 或 XMLHttpRequest）時，預設不包含 cookie。 
+這是因為 JavaScript 請求可以向任何 URL 發出，而不僅僅是頁面來自的相同站點，並且向其他站點發送 cookie 
+可能存在安全風險。
+
+因此，當您使用 JavaScript 發出請求時，您需要透過將憑證選項設為「include」來明確告訴瀏覽器包含 cookie。
+add <credentials: 'include',> after <body: JSON.stringify({})>
+
+5. 當你需要使用 Google 的 SMTP 服務來發送電子郵件, 你的帳號需要先啟用雙重認證, 並使用以下網站創建一
+個應用程式密碼來登入。
+https://myaccount.google.com/apppasswords

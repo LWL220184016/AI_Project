@@ -1,0 +1,15 @@
+ --- Start a web server
+node Server.js 
+
+ --- Find the PID that's using port 3306 and kill it
+lsof -i :8080
+kill -9 PID
+
+ --- install package list in package.json, or install mysql driver
+npm install
+or
+npm install mysql
+
+ --- 改变当前工作目录，可以切换到指定的路径
+cd Server
+

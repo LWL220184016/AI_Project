@@ -1,0 +1,64 @@
+/* General input styles for all types */
+.step-container input {
+    width: 100%; /* Ensure all inputs fill their container */
+    padding: 10px; /* Consistent padding for all inputs */
+    font-size: 14px; /* Consistent font size */
+    line-height: 1.5; /* Ensure consistent line height */
+    height: 40px; /* Explicit height to ensure uniformity */
+    border: 1px solid #bbb; /* Consistent border color */
+    border-radius: 5px; /* Rounded corners for a clean look */
+    box-sizing: border-box; /* Include padding and border in width/height */
+    margin: 0; /* Remove any default margin */
+    appearance: none; /* Normalize appearance across browsers */
+    background-color: #fff; /* Clean, consistent background */
+    text-align: left; /* Align text to the left for consistency */
+}
+
+/* Specific styles for number inputs to fix size inconsistency */
+.step-container input[type="number"] {
+    -moz-appearance: textfield; /* Remove spinner in Firefox */
+    -webkit-appearance: none; /* Remove spinner in Chrome, Safari */
+    appearance: textfield; /* Normalize other browsers */
+    padding: 10px; /* Ensure padding matches text inputs */
+    font-size: 14px; /* Ensure font size matches text inputs */
+    line-height: 1.5; /* Match line height */
+    height: 40px; /* Explicit height to match text inputs */
+    text-align: left; /* Align text to the left for consistency */
+}
+
+/* Remove spinner controls for number inputs in Webkit browsers */
+.step-container input[type="number"]::-webkit-inner-spin-button,
+.step-container input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Placeholder styling for all input types */
+.step-container input::placeholder {
+    font-size: 14px; /* Consistent font size for placeholder text */
+    color: #bbb; /* Light gray placeholder text */
+}
+
+/* Hover effect for all inputs */
+.step-container input:hover {
+    border-color: #888; /* Darker border on hover */
+    box-shadow: 0 0 5px rgba(136, 136, 136, 0.2); /* Subtle shadow on hover */
+}
+
+/* Focus effect for all inputs */
+.step-container input:focus {
+    border-color: #2196F3; /* Blue border on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5); /* Subtle blue shadow on focus */
+}
+
+@media only screen and (max-width: 768px) {
+    .step-container input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .step-container table {
+        font-size: 12px;
+    }
+}

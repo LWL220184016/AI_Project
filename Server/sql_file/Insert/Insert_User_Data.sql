@@ -1,0 +1,10 @@
+INSERT INTO user (userName, userPassword) VALUES ("JohnDoe99", 1);
+INSERT INTO user (userName, userPassword) VALUES ("FoodieGal", 1);
+INSERT INTO user (userName, userPassword) VALUES ("ChefTom", 1);
+INSERT INTO user (userName, userPassword) VALUES ("HealthyEater", 1);
+INSERT INTO user (userName, userPassword) VALUES ("BakeLover", 1);
+INSERT INTO user (userName, userPassword) VALUES ("VeganVibes", 1);
+INSERT INTO user (userName, userPassword) VALUES ("QuickCook", 1);
+INSERT INTO user (userName, userPassword) VALUES ("SpicySamantha", 1);
+INSERT INTO user (userName, userPassword) VALUES ("PickyEater", 1);
+INSERT INTO user (userName, userPassword) VALUES ("GourmetGabe", 1);

@@ -1,0 +1,15 @@
+.container {
+    height: 80%;
+    width: 60%;
+    max-height: 100vh; /* Set the maximum height to the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 40px; /* Optional: Add some padding */
+    background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}

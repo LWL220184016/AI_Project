@@ -1,0 +1,120 @@
+/* Container for the step section */
+.step-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Title styling */
+.step-container h2 {
+    color: #2196F3;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Editable list table */
+.step-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.step-container table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Textarea for step description */
+.step-container textarea.step-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allow vertical resizing */
+    font-size: 14px;
+    min-height: 80px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Button group for navigation buttons */
+.step-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.step-container .step-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Previous button */
+.step-container .previous-button {
+    background-color: #4CAF50;
+}
+
+.step-container .previous-button:hover {
+    background-color: #45A049;
+}
+
+/* Next button */
+.step-container .next-button {
+    background-color: #2196F3;
+}
+
+.step-container .next-button:hover {
+    background-color: #1976D2;
+}
+
+/* Add and Remove buttons for EditableList */
+.step-container .editable-add-button {
+    background-color: #af6a4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.step-container .editable-add-button:hover {
+    background-color: #4549a0;
+}
+
+.step-container .editable-remove-button {
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.step-container .editable-remove-button:hover {
+    background-color: #E64A19;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,29 @@
+To test your application over HTTPS locally, you will need to create a self-signed SSL certificate and modify your server to use HTTPS. Here's a step-by-step guide:
+
+Generate a self-signed SSL certificate. You can use OpenSSL to do this. Open your terminal and run the following commands:
+openssl genrsa -out localhost.key 2048
+openssl req -new -x509 -key localhost.key -out localhost.cert -days 365 -subj /CN=localhost
+This will create a private key file (localhost.key) and a certificate file (localhost.cert).
+
+Modify your server to use HTTPS. You will need to import the https module, read the key and certificate files, and create an HTTPS server. Here's an example:
+const https = require('https');
+const fs = require('fs');
+const app = require('express')();
+
+// Your existing routes...
+
+const options = {
+  key: fs.readFileSync('localhost.key'),
+  cert: fs.readFileSync('localhost.cert')
+};
+
+Update your session middleware to set secure to true:
+router.use(session({
+    secret: generateSecret(),
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true, httpOnly: true, name: "c"}, // Note: secure is now set to true
+    store: sessionStore
+}));
+Now you can start your server and access your application over HTTPS at https://localhost:3000. Note that because you're using a self-signed certificate, your browser will warn you that the connection is not secure. You can safely ignore this warning when testing locally.
+Remember to replace 3000 with the actual port your server is listening on.

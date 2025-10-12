@@ -1,0 +1,73 @@
+.release-container {
+    padding: 20px;
+    width: 800px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 800px;
+}
+
+/* Additional styling for the steps */
+.step-container {
+    animation: fadeIn 0.3s ease;
+}
+
+textarea,
+input {
+    width: 90%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #1976D2;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .release-container {
+        padding: 10px;
+        max-width: 90%;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
+
+    .table-container {
+        max-height: 200px;
+    }
+
+    input, textarea, select, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

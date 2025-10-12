@@ -1,0 +1,82 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.recipe-details-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.recipe-info {
+    flex: 2;
+}
+
+.recipe-ingredients {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.recipe-images {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ingredient-item {
+    margin-bottom: 15px;
+}
+
+.ingredient-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3d8ff;
+    border-radius: 5px;
+}
+
+.food-details {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3d8ff;
+    border-radius: 5px;
+}
+
+.food-details h3 {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}

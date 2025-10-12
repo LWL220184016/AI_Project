@@ -1,0 +1,44 @@
+ --- 在 docker 中創建一個網絡
+docker network create network1
+
+
+ --- Start a mysql database using docker (mysql version is actually ???, 此指令沒有使用網絡)
+docker run -d --name mysqldb -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 mysql:8.0
+    (此指令有使用網絡 network1)
+docker run --network network1 -d --name mysqldb -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 mysql:8.0
+
+
+ --- Login to mysql database running in docker(Password is 123)
+docker exec -it mysqldb mysql -u root -p
+
+ --- show all running docker container
+docker ps
+
+ --- Stop a docker container name mydb
+docker stop mysqldb
+
+ --- Remove a docker container name mydb
+docker rm mysqldb
+
+
+ --- 这个命令用于在运行MySQL数据库的Docker容器中执行一个交互式的Shell会话
+docker exec -it mysqldb bash
+ (check the version of mysql running docker)
+mysql -V
+ (out put the mysql database to a sql file)
+mysqldump -u root -p mydb > backup.sql
+
+
+
+ --- Start a PHP-FPM using docker with Dockerfile (PHP-FPM version is actually ???)
+ （這個指令會根據 Dockerfile 中的設定來創建新的鏡像）
+docker build -t php-fpm-pdo -f /workspaces/tryWebServer-PHP-/Server/Dockerfile .
+
+ （這個指令會創建一個容器來運行鏡像，此指令沒有綁定挂載，也沒有網絡）
+docker run -d --name php-fpm -p 9000:9000 php-fpm-pdo
+
+ （這個指令會創建一個容器來運行鏡像，此指令有綁定挂載，根據 -v 後面的路徑，但是沒有使用網絡）
+docker run -v /workspaces/tryWebServer-PHP-/Server/php_file:/php_file -d --name php-fpm -p 9000:9000 php-fpm-pdo
+
+ （這個指令會創建一個容器來運行鏡像，此指令有綁定挂載，根據 -v 後面的路徑，也有使用網絡 network1）
+docker run --network network1 -v /workspaces/tryWebServer-PHP-/Server/php_file:/php_file -d --name php-fpm -p 9000:9000 php-fpm-pdo

@@ -1,0 +1,76 @@
+#table-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#food-details-table {
+    height:max-content;
+}
+
+.search-container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-bar:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.2);
+}
+
+.search-bar:hover {
+    border-color: #1976D2;
+    box-shadow: 0 4px 6px rgba(33, 150, 243, 0.2);
+}
+
+.food-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+button {
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+@media only screen and (max-width: 768px) {
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-bar {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .food-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}

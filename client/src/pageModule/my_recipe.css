@@ -1,0 +1,123 @@
+.sortItemActive {
+    background: chartreuse;
+}
+
+.btn-more-details-activate {
+    background: chartreuse;
+}
+
+.recipe-table {
+    width: 100%;
+    max-width: 1200px; /* Limit maximum width */
+    border-collapse: collapse;
+    background-color: white; /* Add white background */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners apply */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.recipe-table th, .recipe-table td {
+    text-align: left;
+    padding: 12px; /* Consistent padding */
+}
+
+.recipe-table th {
+    background-color: #2196F3; /* Blue header background */
+    color: white; /* White text for headers */
+}
+
+.recipe-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+.recipe-table tr:hover {
+    background-color: #e0f7fa; /* Highlight row on hover */
+}
+
+.recipe-table td {
+    border-bottom: 1px solid #ddd; /* Add subtle border between rows */
+}
+
+.editBtn {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.editBtn:hover {
+    background-color: #1976D2;
+}
+
+.search-container {
+    margin: 20px auto;
+    max-width: 90%; /* Adjust width to be responsive */
+    padding: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    width: 100%; /* Ensure it scales with the container */
+    max-width: 1200px; /* Limit maximum width */
+    padding: 12px 24px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-bar:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(33,150,243,0.2);
+}
+
+.search-bar:hover {
+    border-color: #1976D2;
+    box-shadow: 0 4px 6px rgba(33, 150, 243, 0.2);
+}
+
+#my_recipe {
+    background-color: white; /* Add white background */
+    padding: 20px; /* Optional: Add padding for better spacing */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+@media only screen and (max-width: 768px) {
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-bar {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .recipe-table th, .recipe-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .recipe-table {
+        font-size: 12px;
+    }
+
+    .editBtn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}

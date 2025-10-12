@@ -1,0 +1,270 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('C:\Users\User\Desktop\AI\AI_Project\client\src\4252349.jpg'); /* 替換為您的背景圖片路徑 */
+    background-size: cover; /* 確保圖片覆蓋整個背景 */
+    background-position: center; /* 圖片居中對齊 */
+    background-attachment: fixed; /* 背景固定不隨滾動移動 */
+}
+
+#flex-container {
+    display: flex;
+    flex-direction: column; /* 改為column讓內容垂直排列 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#header, #nav, #main, #aside, #footer {
+    border: none;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+}
+
+        
+#header {
+    width: 96%; /* 確保header寬度100% */
+    order: 1;
+    height: auto;
+    display: flex;
+    justify-content: space-between; /* 左右對齊 */
+    align-items: center; /* 垂直置中 */
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    padding: 15px 30px;
+    color: white;
+    margin-bottom: 20px; /* 增加與功能區的間距 */
+}
+
+#header .left, #header .middle, #header .right {
+    display: flex;
+    align-items: center;
+}
+
+#header .left a, #header .right a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+#header .middle a {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+#header .rightIconContainer a {
+    margin: 0 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#header .rightIconContainer a:hover {
+    text-decoration: underline;
+}
+
+#header button:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+#header img {
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image fits within the dimensions */
+}
+
+#main img {
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    border-radius: 50%; /* Circular shape */
+    object-fit: cover; /* Ensure the image fits within the dimensions */
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* 改為row實現水平排列 */
+    justify-content: left; /* 水平置中 */
+    align-items: left; /* 垂直置中 */
+    padding: 15px;
+    gap: 20px; /* 按鈕之間的間距 */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* 增加與功能區的間距 */
+}
+
+.nav-button-container {
+    display: inline-block;
+}
+
+.nav-button {
+    display: block;
+    background-color: #fff;
+    color: #043d98;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 6px;
+    margin-bottom: 0; /* 移除按鈕底部間距 */
+    height: 40px;
+    width: 150px; /* Increased width */
+    transition: all 0.3s ease;
+    border: 1px solid #2196F3;
+}
+
+.nav-button-activate {
+    display: block;
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 150px; /* Increased width */
+}
+
+.nav-button:first-child {
+    margin-left: 0;
+}
+
+.nav-button:hover {
+    background-color: #2196F3;
+    color: white;
+    transform: translateY(-2px);
+}
+
+#main table, #my_recipe table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#main th, #main td {
+    text-align: left;
+    padding: 8px;
+}
+
+#main tr:nth-child(even){background-color: #f2f2f2}
+
+#main th, #my_recipe th {
+    background-color: #2196F3;
+    color: white;
+    padding: 12px 16px;
+}
+
+#footer {
+    order: 5;
+    width: 100%;
+}
+
+#header h1 ,#main h2 {
+    width: auto;
+}
+
+#main h2{
+    margin: 5px 0;
+}
+
+#header button {
+    width: 100px;
+}
+
+#nav img {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#nav button, #header button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+}
+
+#nav button:hover, #header button:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+#main h2 {
+    margin: 0px 0px 3px 0px; 
+}
+
+#aside img { 
+    float: right;
+}
+
+#aside div {
+    clear: none;
+}
+
+.table-container {
+    max-height: 300px; /* Set a maximum height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 10px;
+    border: 1px solid #ddd; /* Optional: Add a border for the container */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+@media only screen and (max-width: 900px){
+}
+
+@media only screen and (max-width: 750px){
+}
+
+@media only screen and (max-width: 768px) {
+    #header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #header h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    #header button {
+        width: 80px;
+        font-size: 14px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .table-container {
+        max-height: 200px; /* Reduce height for smaller screens */
+    }
+
+    .release-container {
+        padding: 10px;
+    }
+
+    .release-container input, .release-container textarea, .release-container select, .release-container button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

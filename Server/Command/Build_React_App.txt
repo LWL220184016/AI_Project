@@ -1,0 +1,6 @@
+Run this command to build your React app for production:
+    npm run build
+
+
+Start development server: 
+    npm start
