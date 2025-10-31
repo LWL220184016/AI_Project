@@ -9,8 +9,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardi
 
 from model import Model
 from ultralytics import YOLO
-from config import model_config, train_config
 from torch.utils.tensorboard import SummaryWriter
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from yolo.config import model_config, train_config
 
 
 class Yolo(Model):
@@ -21,8 +24,8 @@ class Yolo(Model):
 
     def __init__(
         self,
-        model_cfg: model_config,
-        train_cfg: train_config,
+        model_cfg: 'model_config',
+        train_cfg: 'train_config',
         tasks: List[str] = None,
         **kwargs
     ):
