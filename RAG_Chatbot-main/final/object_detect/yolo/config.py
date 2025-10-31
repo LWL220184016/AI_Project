@@ -6,4 +6,8 @@ class model_config:
     pass
 
 class train_config:
+    model_dir = "./trained_model"
+    log_dir = "./log"
+    epochs = 5
+    learning_rate = 0.0001
     pass

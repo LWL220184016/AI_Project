@@ -1,11 +1,11 @@
  --- 在 docker 中創建一個網絡
 docker network create network1
-
+docker network rm network1
 
  --- Start a mysql database using docker (mysql version is actually ???, 此指令沒有使用網絡)
 docker run -d --name mysqldb -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 mysql:8.0
     (此指令有使用網絡 network1)
-docker run --network network1 -d --name mysqldb -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 mysql:8.0
+docker run --network network1 -d --name mysqldb -e MYSQL_ROOT_PASSWORD=123 -p 3306:3306 docker.io/library/mysql:8.0
 
 
  --- Login to mysql database running in docker(Password is 123)

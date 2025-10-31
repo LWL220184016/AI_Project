@@ -1,0 +1,8 @@
+# 1. 更新套件列表
+sudo apt update
+
+# 2. 安裝 Podman
+sudo apt install docker.io
+
+# 3. 把用戶加入群組, 不然沒有權限
+sudo usermod -aG docker $USER

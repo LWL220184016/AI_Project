@@ -1,3 +1,5 @@
+import os
+
 from abc import ABC, abstractmethod
 
 
@@ -16,6 +18,10 @@ class Model(ABC):
         self.model_cfg = model_cfg
         self.train_cfg = train_cfg
         self.tasks = tasks
+
+        
+        os.makedirs(train_cfg.log_dir, exist_ok=True)
+        os.makedirs(train_cfg.model_dir, exist_ok=True)
 
         pass
 

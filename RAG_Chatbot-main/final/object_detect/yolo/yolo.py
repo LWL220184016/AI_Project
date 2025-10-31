@@ -10,6 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardi
 from model import Model
 from ultralytics import YOLO
 from config import model_config, train_config
+from torch.utils.tensorboard import SummaryWriter
 
 
 class Yolo(Model):
@@ -25,11 +26,7 @@ class Yolo(Model):
         tasks: List[str] = None,
         **kwargs
     ):
-        super().__init__(**kwargs)
-
-        self.model_cfg = model_cfg
-        self.train_cfg = train_cfg
-        self.tasks = tasks if tasks else []
+        super().__init__(model_cfg, train_cfg, tasks, **kwargs)
 
         # 初始化 YOLO 模型
         self.model = YOLO(model_cfg.name_or_path)
@@ -38,42 +35,42 @@ class Yolo(Model):
 
     def train(self, dataLoader):
         """
-        訓練 YOLO 模型
-        :param data: dataset yaml 檔案路徑 (例如 "construction-ppe.yaml")
-        :return: 訓練結果
+        訓練 YOLO 模型並記錄 TensorBoard 日誌與儲存模型
+        :param dataLoader: PyTorch 的 DataLoader
+        :return: None
         """
-        # super().train()
+        optimizer = optim.Adam(self.model.parameters(), lr=self.train_cfg.learning_rate)
+        writer = SummaryWriter(log_dir=self.train_cfg.log_dir)
 
-        # ====== Step 4: Optimizer ======
-        optimizer = optim.Adam(model.parameters(), lr=1e-4)
-
-
-        # ====== Step 5: 訓練 loop ======
-        num_epochs = 5
+        num_epochs = self.train_cfg.epochs
         for epoch in range(num_epochs):
             self.model.train()
             running_loss = 0.0
 
-            for imgs, targets in dataLoader:
-                # 移到 GPU
+            for step, (imgs, targets) in enumerate(dataLoader):
                 imgs = [img.to(self.device) for img in imgs]
                 targets = [{k: torch.tensor(v).to(self.device) for k, v in t.items()} for t in targets]
 
-                # 前向傳播
-                outputs = model(imgs)
+                outputs = self.model(imgs)
+                loss = self.model.loss(outputs, targets)
 
-                # YOLO 的 loss 計算方式
-                # Ultralytics 的 YOLO 模型 forward 時，若傳入 targets，會回傳 loss
-                loss = model.loss(outputs, targets)
-
-                # 反向傳播
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
 
                 running_loss += loss.item()
+                writer.add_scalar("Loss/step", loss.item(), epoch * len(dataLoader) + step)
 
-            print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(dataLoader):.4f}")
+            avg_loss = running_loss / len(dataLoader)
+            writer.add_scalar("Loss/epoch", avg_loss, epoch)
+            print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {avg_loss:.4f}")
+
+            # 儲存模型權重
+            save_path = os.path.join("checkpoints", f"{self.model_cfg.name_or_path}_epoch{epoch+1}.pt")
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            torch.save(self.model.state_dict(), save_path)
+
+        writer.close()
 
     def evaluate(self, data: str) -> Dict[str, Any]:
         """
@@ -85,7 +82,7 @@ class Yolo(Model):
             data=data,
             imgsz=self.train_cfg.imgsz,
             batch=self.train_cfg.batch_size,
-            device=self.train_cfg.device,
+            device=self.device,
         )
         return metrics.results_dict
 
@@ -104,17 +101,3 @@ class Yolo(Model):
         )
         return results
 
-
-if __name__ == "__main__":
-    # 假設 config 內有定義好 model_config 與 train_config
-    model = Yolo(model_cfg=model_config, train_cfg=train_config, tasks=["detection"])
-
-    # 範例：訓練
-    train_results = model.train(data="construction-ppe.yaml")
-
-    # 範例：評估
-    eval_results = model.evaluate(data="construction-ppe.yaml")
-    print("Evaluation:", eval_results)
-
-    # 範例：推理
-    preds = model.predict(source="test_images/", save=True)
