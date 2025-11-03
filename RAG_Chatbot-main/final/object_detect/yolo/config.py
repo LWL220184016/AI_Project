@@ -1,7 +1,7 @@
 
 
 class model_config:
-    name_or_path = "Ultralytics/YOLO11"
+    name_or_path = "yolov8n.pt"
     
     pass
 

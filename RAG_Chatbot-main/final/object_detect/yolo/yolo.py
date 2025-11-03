@@ -52,9 +52,9 @@ class Yolo(Model):
 
             for step, (imgs, targets) in enumerate(dataLoader):
                 imgs = [img.to(self.device) for img in imgs]
-                targets = [{k: torch.tensor(v).to(self.device) for k, v in t.items()} for t in targets]
+                targets = [{k: v.detach().clone().to(self.device) for k, v in t.items()} for t in targets]
 
-                outputs = self.model(imgs)
+                outputs = self.model.model(imgs)
                 loss = self.model.loss(outputs, targets)
 
                 optimizer.zero_grad()
