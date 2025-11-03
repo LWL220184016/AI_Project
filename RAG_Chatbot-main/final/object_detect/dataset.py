@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 
-class Dataset(Dataset):
+class YoloDataset(Dataset):
     def __init__(self, images_dir, labels_dir, transform=None):
         self.images_dir = images_dir
         self.labels_dir = labels_dir

@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 class Yolo(Model):
     """
-    YOLO 模型封裝類別
+    模型封裝類別
     - 支援訓練、評估與推理
     """
 
@@ -31,14 +31,14 @@ class Yolo(Model):
     ):
         super().__init__(model_cfg, train_cfg, tasks, **kwargs)
 
-        # 初始化 YOLO 模型
+        # 初始化模型
         self.model = YOLO(model_cfg.name_or_path)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model.to(self.device)
 
     def train(self, dataLoader):
         """
-        訓練 YOLO 模型並記錄 TensorBoard 日誌與儲存模型
+        訓練模型並記錄 TensorBoard 日誌與儲存模型
         :param dataLoader: PyTorch 的 DataLoader
         :return: None
         """
@@ -47,11 +47,11 @@ class Yolo(Model):
 
         num_epochs = self.train_cfg.epochs
         for epoch in range(num_epochs):
-            self.model.train()
+            self.model.model.train()
             running_loss = 0.0
 
             for step, (imgs, targets) in enumerate(dataLoader):
-                imgs = [img.to(self.device) for img in imgs]
+                imgs = torch.stack([img.to(self.device) for img in imgs])
                 targets = [{k: v.detach().clone().to(self.device) for k, v in t.items()} for t in targets]
 
                 outputs = self.model.model(imgs)
