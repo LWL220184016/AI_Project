@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     model_cfg = model_config()
     train_cfg = train_config()
-    model = Yolo(model_cfg, train_cfg, load_from="C:\\Users\\User\\Desktop\\AI\\AI_Project\\RAG_Chatbot-main\\final\\object_detect\\yolo\\trained_model\\best.pt")
+    model = Yolo(model_cfg, train_cfg, load_from="C:\\Users\\User\\Desktop\\AI\\AI_Project\\RL\\final\\object_detect\\yolo\\trained_model\\best.pt")
 
 
-    result = model.predict(source="C:\\Users\\User\\Desktop\\AI\\AI_Project\\RAG_Chatbot-main\\final\\object_detect\\test_images\\construction-site-4020496_1280.jpg")
+    result = model.predict(source="C:\\Users\\User\\Desktop\\AI\\AI_Project\\RL\\final\\object_detect\\test_images\\construction-site-4020496_1280.jpg")
