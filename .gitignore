@@ -1,3 +1,5 @@
 __pycache__/
 
 construction-ppe.zip
+trained_model/
+runs/

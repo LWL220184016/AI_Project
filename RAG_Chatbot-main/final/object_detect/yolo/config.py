@@ -1,7 +1,7 @@
 
 
 class model_config:
-    name_or_path = "yolov8n.pt"
+    name_or_path = "yolo11n.pt"
     
     pass
 

@@ -12,13 +12,10 @@ class Model(ABC):
     def __init__(self, 
                  model_cfg, 
                  train_cfg, 
-                 tasks
                 ):
         
         self.model_cfg = model_cfg
         self.train_cfg = train_cfg
-        self.tasks = tasks
-
         
         os.makedirs(train_cfg.log_dir, exist_ok=True)
         os.makedirs(train_cfg.model_dir, exist_ok=True)
