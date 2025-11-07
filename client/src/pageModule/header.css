@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-image: url('C:\Users\lotun\Desktop\AI_Project\client\src\4252349.jpg'); /* 替換為您的背景圖片路徑 */
+    background-image: url('/home/user/AI_Project/client/public/4252349.jpg'); /* 替換為您的背景圖片路徑 */
     background-size: cover; /* 確保圖片覆蓋整個背景 */
     background-position: center; /* 圖片居中對齊 */
     background-attachment: fixed; /* 背景固定不隨滾動移動 */
