@@ -34,4 +34,4 @@ class train_config:
     # --- 訓練超參數 ---
     epochs = 5
     learning_rate = 0.0001
-    batch_size = 4 # 建議也將 batch_size 放在這裡
+    batch_size = 4 

@@ -37,7 +37,7 @@ class Yolo(Model):
             self.model = YOLO(load_from)
         else:
             self.model = YOLO(model_cfg.name_or_path)
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+            
         self.model.to(self.device)
 
 

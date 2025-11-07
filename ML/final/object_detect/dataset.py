@@ -35,7 +35,7 @@ class YoloDataset(Dataset):
 
         target = {
             'boxes': torch.tensor(boxes, dtype=torch.float32),
-            'labels': torch.tensor(labels, dtype=torch.int64)
+            'class_labels': torch.tensor(labels, dtype=torch.int64)
         }
 
         if self.transform:
@@ -120,7 +120,7 @@ class CocoDataset(Dataset):
         target = {
             'image_id': torch.tensor([img_id], dtype=torch.int64),
             'boxes': torch.tensor(boxes, dtype=torch.float32),
-            'labels': torch.tensor(labels, dtype=torch.int64)
+            'class_labels': torch.tensor(labels, dtype=torch.int64)
         }
 
         # 應用圖像轉換 (關鍵！)
@@ -129,10 +129,10 @@ class CocoDataset(Dataset):
         if self.transform:
             # Albumentations 的 transform 函數需要特定的輸入格式
             # 這裡只是一個示例，實際使用時需要根據 transform 的要求來調整
-            transformed = self.transform(image=np.array(image), bboxes=target['boxes'], labels=target['labels'])
+            transformed = self.transform(image=np.array(image), bboxes=target['boxes'], labels=target['class_labels'])
             image = transformed['image']
             target['boxes'] = torch.tensor(transformed['bboxes'], dtype=torch.float32)
-            target['labels'] = torch.tensor(transformed['labels'], dtype=torch.int64)
+            target['class_labels'] = torch.tensor(transformed['class_labels'], dtype=torch.int64)
 
         return image, target
 

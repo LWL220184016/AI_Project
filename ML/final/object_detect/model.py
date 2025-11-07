@@ -1,4 +1,5 @@
 import os
+import torch
 
 from abc import ABC, abstractmethod
 
@@ -16,6 +17,9 @@ class Model(ABC):
         
         self.model_cfg = model_cfg
         self.train_cfg = train_cfg
+        
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        print("using device: ", self.device)
         
         os.makedirs(train_cfg.log_dir, exist_ok=True)
         os.makedirs(train_cfg.model_dir, exist_ok=True)
