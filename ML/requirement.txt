@@ -3,3 +3,5 @@ ultralytics==8.3.214
 torch==2.8.0+cu126
 roboflow
 transformers
+timm
+accelerate

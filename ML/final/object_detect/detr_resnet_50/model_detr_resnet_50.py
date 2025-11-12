@@ -10,7 +10,7 @@ from torch.cuda.amp import autocast, GradScaler   # 顶部加入
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
 
 from model import Model # 假設這是你繼承的基類
-from transformers import AutoImageProcessor, AutoModelForObjectDetection, AutoConfig
+from transformers import DetrImageProcessor, DetrForObjectDetection, AutoConfig
 from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader
 from dataset import CocoDataset
@@ -25,35 +25,30 @@ class detr_resnet_50(Model):
         self,
         model_cfg: 'model_config',
         train_cfg: 'train_config',
+        load_from: str = None,
         **kwargs
     ):
         super().__init__(model_cfg, train_cfg, **kwargs)
         self.model_cfg = model_cfg
         self.train_cfg = train_cfg
-
-        # 初始化模型處理器
-        self.processor = AutoImageProcessor.from_pretrained(
-            model_cfg.name_or_path,
-            do_resize=True,
-            size={"shortest_edge": 800},  # 关键！短边 800
-            do_rescale=True,
-            do_normalize=True
-        )
-
-        # 加載模型配置，並更新類別數量
-        config = AutoConfig.from_pretrained(
-            model_cfg.name_or_path,
-            num_labels=len(model_cfg.id2label),
-            id2label=model_cfg.id2label,
-            label2id=model_cfg.label2id,
-        )
         
-        # 使用更新後的 config 加載模型
-        self.model = AutoModelForObjectDetection.from_pretrained(
-            model_cfg.name_or_path,
-            config=config,
-            ignore_mismatched_sizes=True
-        )
+        # 初始化模型
+        if load_from:
+            raise NotImplementedError("Load custom model not implement in detr_resnet_50.")
+        else:
+            # 加載模型配置，並更新類別數量
+            config = AutoConfig.from_pretrained(
+                model_cfg.name_or_path,
+                # num_labels=len(model_cfg.id2label), 
+                id2label=model_cfg.id2label,
+                label2id=model_cfg.label2id,
+                assign=False
+            )
+            
+            # 使用更新後的 config 加載模型
+            self.processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+            self.model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+
 
         self.model.to(self.device)
         
@@ -85,15 +80,15 @@ class detr_resnet_50(Model):
             images = [item[0] for item in batch]
             labels = [item[1] for item in batch]
 
-            # 固定 800×800 → 完全不需要 padding
+            # 固定 800×800
             target_size = (800, 800)
             resized_images = [img.resize(target_size, Image.BILINEAR) for img in images]
 
+            # processor 不再 resize，只做 rescale + normalize
             encodings = self.processor(images=resized_images, return_tensors="pt")
 
             return {
                 'pixel_values': encodings['pixel_values'],
-                # 不再返回 pixel_mask
                 'labels': labels
             }
 
@@ -235,9 +230,9 @@ class detr_resnet_50(Model):
                 total += outputs.loss.item()
         return total
     
-
-    def predict(self, image: Image.Image, threshold: float = 0.9):
+    def predict(self, source: str, threshold: float = 0.9):
         self.model.eval()
+        image = Image.open(source)
         inputs = self.processor(images=image, return_tensors="pt").to(self.device)
         with torch.no_grad():
             outputs = self.model(**inputs)
@@ -266,3 +261,16 @@ class detr_resnet_50(Model):
         avg_loss = total_loss / len(val_loader)
         print(f"Validation Loss: {avg_loss:.4f}")
         return {"validation_loss": avg_loss}
+    
+
+if __name__ == "__main__":
+    from detr_resnet_50.config import model_config, train_config
+
+    model_cfg = model_config()
+    train_cfg = train_config()
+    model = detr_resnet_50(model_cfg=model_cfg, train_cfg=train_cfg, load_from=None)
+
+
+    result = model.predict(source="/home/user/AI_Project/ML/final/object_detect/test_images/construction-site-2630484_1280.jpg")
+
+    print(result)

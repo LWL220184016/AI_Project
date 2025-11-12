@@ -27,7 +27,7 @@ class Yolo(Model):
         self,
         model_cfg: 'model_config',
         train_cfg: 'train_config',
-        load_from: str = "",
+        load_from: str = None,
         **kwargs
     ):
         super().__init__(model_cfg, train_cfg, **kwargs)
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     model_cfg = model_config()
     train_cfg = train_config()
-    model = Yolo(model_cfg, train_cfg, load_from="/home/user/AI_Project/RL/final/object_detect/yolo/trained_model/best.pt")
+    model = Yolo(model_cfg, train_cfg, load_from="/home/user/AI_Project/ML/final/object_detect/yolo/trained_model/best.pt")
 
 
-    result = model.predict(source="/home/user/AI_Project/RL/final/object_detect/test_images/construction-site-2630484_1280.jpg")
+    result = model.predict(source="/home/user/AI_Project/ML/final/object_detect/test_images/construction-site-2630484_1280.jpg")
