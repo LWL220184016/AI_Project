@@ -74,7 +74,6 @@ class detr_resnet_50(Model):
             project_name=self.train_cfg.project_name,
             version=self.train_cfg.version,
             split=split,
-            subsample_fraction=0.1
         )
 
         def collate_fn(batch):

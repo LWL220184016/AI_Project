@@ -5,3 +5,4 @@ roboflow
 transformers
 timm
 accelerate
+datasets
